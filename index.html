@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylo - AI-Powered Fashion Assistant</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/lucide@latest/dist/umd/lucide.js">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <div class="logo-icon">
+                        <span>S</span>
+                    </div>
+                    <h1>Stylo</h1>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="nav-desktop">
+                    <a href="#dashboard">Dashboard</a>
+                    <a href="#ai-wardrobe">AI Wardrobe</a>
+                    <a href="#style-studio">Style Studio</a>
+                    <a href="#inside">Inside</a>
+                </nav>
+
+                <!-- Desktop Profile -->
+                <div class="profile-section">
+                    <button class="btn-profile" id="profileBtn">
+                        <i data-lucide="user"></i>
+                        Profile
+                    </button>
+                    
+                    <!-- Profile Dropdown -->
+                    <div class="profile-dropdown" id="profileDropdown">
+                        <div class="profile-header">
+                            <div class="profile-avatar">
+                                <i data-lucide="user"></i>
+                            </div>
+                            <div class="profile-info">
+                                <p class="profile-name">Sarah Johnson</p>
+                                <p class="profile-email">sarah@stylo.com</p>
+                            </div>
+                        </div>
+                        <div class="profile-menu">
+                            <button class="profile-item">
+                                <i data-lucide="heart"></i>
+                                <span>Saved Outfits (12)</span>
+                            </button>
+                            <button class="profile-item">
+                                <i data-lucide="camera"></i>
+                                <span>My Wardrobe (47 items)</span>
+                            </button>
+                            <button class="profile-item">
+                                <i data-lucide="settings"></i>
+                                <span>Style Preferences</span>
+                            </button>
+                            <div class="profile-divider"></div>
+                            <button class="profile-item logout">
+                                <i data-lucide="log-out"></i>
+                                <span>Sign Out</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary">Get Started</button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i data-lucide="menu" id="menuIcon"></i>
+                    <i data-lucide="x" id="closeIcon" style="display: none;"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div class="mobile-menu" id="mobileMenu">
+                <div class="mobile-nav">
+                    <a href="#dashboard">Dashboard</a>
+                    <a href="#ai-wardrobe">AI Wardrobe</a>
+                    <a href="#style-studio">Style Studio</a>
+                    <a href="#inside">Inside</a>
+                    <div class="mobile-buttons">
+                        <button class="btn-ghost mobile-profile">
+                            <i data-lucide="user"></i>
+                            Profile
+                        </button>
+                        <button class="btn-primary">Get Started</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">
+                            Minimal Effort.
+                            <br>
+                            <span class="hero-title-bold">Maximum Style.</span>
+                        </h1>
+                        <p class="hero-description">
+                            Transform your wardrobe with AI-powered outfit suggestions. 
+                            Upload your clothes, define your style, and let our smart algorithm 
+                            create perfect outfits for any occasion.
+                        </p>
+                    </div>
+
+                    <div class="hero-buttons">
+                        <button class="btn-primary btn-large">
+                            <i data-lucide="sparkles"></i>
+                            Start Styling
+                        </button>
+                        
+                        <div class="upload-container">
+                            <button class="btn-outline btn-large" id="uploadBtn">
+                                <i data-lucide="camera"></i>
+                                Upload Photos
+                            </button>
+                            
+                            <!-- Upload Options Dropdown -->
+                            <div class="upload-dropdown" id="uploadDropdown">
+                                <div class="upload-content">
+                                    <h3>Add to Your Wardrobe</h3>
+                                    <div class="upload-options">
+                                        <button class="upload-option" id="takePhotoBtn">
+                                            <i data-lucide="camera"></i>
+                                            <div class="upload-option-text">
+                                                <p class="upload-option-title">Take Photo</p>
+                                                <p class="upload-option-desc">Use camera to capture items</p>
+                                            </div>
+                                        </button>
+                                        
+                                        <button class="upload-option" id="uploadGalleryBtn">
+                                            <i data-lucide="upload"></i>
+                                            <div class="upload-option-text">
+                                                <p class="upload-option-title">Upload from Gallery</p>
+                                                <p class="upload-option-desc">Select multiple photos</p>
+                                            </div>
+                                        </button>
+                                        
+                                        <button class="upload-option upload-organize" id="uploadOrganizeBtn">
+                                            <i data-lucide="file-image"></i>
+                                            <div class="upload-option-text">
+                                                <p class="upload-option-title">Upload & Organize</p>
+                                                <p class="upload-option-desc">AI-powered categorization</p>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature highlights -->
+                    <div class="feature-highlights">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i data-lucide="camera"></i>
+                            </div>
+                            <h3>Upload & Organize</h3>
+                            <p>Simply upload photos of your clothes to build your digital wardrobe</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i data-lucide="sparkles"></i>
+                            </div>
+                            <h3>AI Suggestions</h3>
+                            <p>Get personalized outfit recommendations based on weather & occasion</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i data-lucide="shirt"></i>
+                            </div>
+                            <h3>Perfect Outfits</h3>
+                            <p>Discover new combinations from clothes you already own</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Occasion Selector Section -->
+        <section id="occasion-selector" class="occasion-selector">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Choose Your Occasion</h2>
+                    <p>Select an occasion and weather condition to get personalized outfit suggestions from your wardrobe.</p>
+                </div>
+
+                <!-- Occasion Selection -->
+                <div class="occasion-section">
+                    <h3>Select Occasion</h3>
+                    <div class="occasion-grid">
+                        <button class="occasion-btn" data-occasion="Wedding">
+                            <span class="occasion-icon">💒</span>
+                            <span class="occasion-text">Wedding</span>
+                        </button>
+                        <button class="occasion-btn" data-occasion="Birthday Party">
+                            <span class="occasion-icon">🎉</span>
+                            <span class="occasion-text">Birthday Party</span>
+                        </button>
+                        <button class="occasion-btn" data-occasion="College">
+                            <span class="occasion-icon">🎓</span>
+                            <span class="occasion-text">College</span>
+                        </button>
+                        <button class="occasion-btn" data-occasion="Office">
+                            <span class="occasion-icon">💼</span>
+                            <span class="occasion-text">Office</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Weather Selection -->
+                <div class="weather-section" id="weatherSection" style="display: none;">
+                    <h3>Choose Weather</h3>
+                    <div class="weather-grid">
+                        <button class="weather-btn" data-weather="Sunny">
+                            <i data-lucide="cloud-sun"></i>
+                            <span>Sunny</span>
+                        </button>
+                        <button class="weather-btn" data-weather="Rainy">
+                            <i data-lucide="cloud-sun"></i>
+                            <span>Rainy</span>
+                        </button>
+                        <button class="weather-btn" data-weather="Cold">
+                            <i data-lucide="cloud-sun"></i>
+                            <span>Cold</span>
+                        </button>
+                        <button class="weather-btn" data-weather="Mild">
+                            <i data-lucide="cloud-sun"></i>
+                            <span>Mild</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Outfit Display -->
+                <div class="outfit-display" id="outfitDisplay" style="display: none;">
+                    <div class="outfit-card">
+                        <div class="outfit-header">
+                            <div class="outfit-badge-container">
+                                <i data-lucide="calendar"></i>
+                                <span class="outfit-badge" id="outfitBadge"></span>
+                            </div>
+                            <h3>Perfect Outfit Found!</h3>
+                            <p class="outfit-description" id="outfitDescription"></p>
+                        </div>
+                        <div class="outfit-content">
+                            <div class="outfit-items">
+                                <p class="outfit-items-title">Recommended Items:</p>
+                                <div class="outfit-items-grid" id="outfitItemsGrid">
+                                    <!-- Items will be populated by JavaScript -->
+                                </div>
+                            </div>
+                            <div class="outfit-actions">
+                                <button class="btn-primary outfit-try-btn">
+                                    <i data-lucide="sparkles"></i>
+                                    Try This Outfit
+                                </button>
+                                <button class="btn-outline outfit-save-btn">
+                                    <i data-lucide="heart"></i>
+                                    Save to Favorites
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Style Insights -->
+                <div class="style-insights">
+                    <div class="insight-card">
+                        <div class="insight-header">
+                            <div class="insight-icon trending">
+                                <i data-lucide="trending-up"></i>
+                            </div>
+                            <h3>Trending Looks</h3>
+                        </div>
+                        <div class="insight-content">
+                            <p>Stay updated with styles that match your taste</p>
+                        </div>
+                    </div>
+                    <div class="insight-card">
+                        <div class="insight-header">
+                            <div class="insight-icon favorites">
+                                <i data-lucide="heart"></i>
+                            </div>
+                            <h3>Personal Favorites</h3>
+                        </div>
+                        <div class="insight-content">
+                            <p>Save and revisit your most loved combinations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Smart Wardrobe Section -->
+        <section id="ai-wardrobe" class="wardrobe">
+            <div class="container">
+                <div class="section-header">
+                    <div class="canvas-header">
+                        <h2 class="canvas-title">Your Style Canvas Awaits</h2>
+                        <p class="canvas-subtitle">Where your fashion story begins</p>
+                    </div>
+                    <h3>Smart Wardrobe</h3>
+                    <p>Your AI-powered digital closet that learns your style and suggests perfect outfits for any occasion, weather, or mood.</p>
+                </div>
+
+                <div class="wardrobe-content">
+                    <!-- Wardrobe Items -->
+                    <div class="wardrobe-items">
+                        <div class="wardrobe-header">
+                            <h3>Your Closet</h3>
+                            <button class="btn-primary btn-small">
+                                <i data-lucide="plus"></i>
+                                Add Items
+                            </button>
+                        </div>
+
+                        <div class="items-grid">
+                            <div class="item-card">
+                                <div class="item-image">
+                                    <img src="https://images.unsplash.com/photo-1598798918315-e954298ef4cb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdHlsaXNoJTIwY2xvdGhpbmclMjBmYXNoaW9uJTIwb3V0Zml0fGVufDF8fHx8MTc1ODg5MDkxMHww&ixlib=rb-4.1.0&q=80&w=1080" alt="Black Dress Shoes">
+                                </div>
+                                <h4>Black Dress Shoes</h4>
+                                <div class="item-tags">
+                                    <span class="tag-category">Shoes</span>
+                                    <span class="tag-color">Black</span>
+                                </div>
+                                <div class="item-occasions">
+                                    <span class="tag-occasion">Business</span>
+                                    <span class="tag-occasion">Formal</span>
+                                </div>
+                            </div>
+
+                            <div class="item-card">
+                                <div class="item-image">
+                                    <img src="https://images.unsplash.com/photo-1758457078148-dad2f48d9abf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGNhc3VhbCUyMG91dGZpdCUyMHN0eWxlfGVufDF8fHx8MTc1ODg5MDkxN3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="Navy Blazer">
+                                </div>
+                                <h4>Navy Blazer</h4>
+                                <div class="item-tags">
+                                    <span class="tag-category">Tops</span>
+                                    <span class="tag-color">Navy</span>
+                                </div>
+                                <div class="item-occasions">
+                                    <span class="tag-occasion">Business</span>
+                                    <span class="tag-occasion">Smart Casual</span>
+                                </div>
+                            </div>
+
+                            <div class="item-card">
+                                <div class="item-image">
+                                    <img src="https://images.unsplash.com/photo-1758613655304-48776efb25d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmYXNoaW9uJTIwbW9kZWwlMjBvdXRmaXQlMjBzdHlsaW5nfGVufDF8fHx8MTc1ODgyNzM1MXww&ixlib=rb-4.1.0&q=80&w=1080" alt="White Button Shirt">
+                                </div>
+                                <h4>White Button Shirt</h4>
+                                <div class="item-tags">
+                                    <span class="tag-category">Tops</span>
+                                    <span class="tag-color">White</span>
+                                </div>
+                                <div class="item-occasions">
+                                    <span class="tag-occasion">Business</span>
+                                    <span class="tag-occasion">Casual</span>
+                                    <span class="tag-occasion">Formal</span>
+                                </div>
+                            </div>
+
+                            <!-- Add More Card -->
+                            <div class="item-card add-more">
+                                <div class="add-more-content">
+                                    <i data-lucide="plus"></i>
+                                    <p>Add more items to get better suggestions</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI Suggestions -->
+                    <div class="ai-suggestions">
+                        <div class="suggestions-header">
+                            <i data-lucide="zap"></i>
+                            <h3>AI Suggestions</h3>
+                        </div>
+
+                        <div class="suggestions-list">
+                            <div class="suggestion-card personalized">
+                                <div class="suggestion-header">
+                                    <div class="suggestion-occasion">
+                                        <i data-lucide="calendar"></i>
+                                        <span>Business Meeting</span>
+                                    </div>
+                                    <span class="suggestion-badge personalized-badge">✨ Suggested</span>
+                                </div>
+                                <div class="suggestion-weather">
+                                    <i data-lucide="cloud-sun"></i>
+                                    <span>Cool Weather</span>
+                                </div>
+                                <div class="suggestion-content">
+                                    <div class="suggestion-items">
+                                        <p class="suggestion-items-title">Suggested for You:</p>
+                                        <div class="suggestion-items-list">
+                                            <div class="suggestion-item">
+                                                <i data-lucide="shirt"></i>
+                                                <span>Navy Blazer</span>
+                                            </div>
+                                            <div class="suggestion-item">
+                                                <i data-lucide="shirt"></i>
+                                                <span>White Button Shirt</span>
+                                            </div>
+                                            <div class="suggestion-item">
+                                                <i data-lucide="shirt"></i>
+                                                <span>Black Dress Shoes</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="suggestion-confidence">
+                                        <span>Style Match:</span>
+                                        <span class="confidence-score">95%</span>
+                                    </div>
+                                    <button class="btn-primary suggestion-try-btn">Try This Outfit</button>
+                                </div>
+                            </div>
+
+                            <div class="suggestion-card new-combo">
+                                <div class="suggestion-header">
+                                    <div class="suggestion-occasion">
+                                        <i data-lucide="calendar"></i>
+                                        <span>Casual Friday</span>
+                                    </div>
+                                    <span class="suggestion-badge new-combo-badge">🎯 New Combo</span>
+                                </div>
+                                <div class="suggestion-weather">
+                                    <i data-lucide="cloud-sun"></i>
+                                    <span>Mild Weather</span>
+                                </div>
+                                <div class="suggestion-content">
+                                    <div class="suggestion-items">
+                                        <p class="suggestion-items-title">New Combination Discovered:</p>
+                                        <div class="suggestion-items-list">
+                                            <div class="suggestion-item">
+                                                <i data-lucide="shirt"></i>
+                                                <span>White Button Shirt</span>
+                                            </div>
+                                            <div class="suggestion-item">
+                                                <i data-lucide="shirt"></i>
+                                                <span>Dark Jeans</span>
+                                            </div>
+                                            <div class="suggestion-item">
+                                                <i data-lucide="shirt"></i>
+                                                <span>Casual Sneakers</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="suggestion-confidence">
+                                        <span>Style Match:</span>
+                                        <span class="confidence-score">88%</span>
+                                    </div>
+                                    <button class="btn-primary suggestion-try-btn">Try This Outfit</button>
+                                </div>
+                            </div>
+
+                            <div class="suggestion-card perfect-discovery">
+                                <div class="suggestion-header">
+                                    <div class="suggestion-occasion">
+                                        <i data-lucide="calendar"></i>
+                                        <span>Date Night</span>
+                                    </div>
+                                    <span class="suggestion-badge perfect-discovery-badge">💫 Perfect Discovery</span>
+                                </div>
+                                <div class="suggestion-weather">
+                                    <i data-lucide="cloud-sun"></i>
+                                    <span>Warm Evening</span>
+                                </div>
+                                <div class="suggestion-content">
+                                    <div class="suggestion-items">
+                                        <p class="suggestion-items-title">Perfect Match Found:</p>
+                                        <div class="suggestion-items-list">
+                                            <div class="suggestion-item">
+                                                <i data-lucide="shirt"></i>
+                                                <span>Black Dress</span>
+                                            </div>
+                                            <div class="suggestion-item">
+                                                <i data-lucide="shirt"></i>
+                                                <span>Statement Jewelry</span>
+                                            </div>
+                                            <div class="suggestion-item">
+                                                <i data-lucide="shirt"></i>
+                                                <span>Ankle Boots</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="suggestion-confidence">
+                                        <span>Style Match:</span>
+                                        <span class="confidence-score">92%</span>
+                                    </div>
+                                    <button class="btn-primary suggestion-try-btn">💫 Try This Discovery</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Weather Widget -->
+                        <div class="weather-widget">
+                            <div class="weather-header">
+                                <i data-lucide="cloud-sun"></i>
+                                <h3>Today's Weather</h3>
+                            </div>
+                            <div class="weather-content">
+                                <div class="weather-info">
+                                    <span>Temperature:</span>
+                                    <span>72°F</span>
+                                </div>
+                                <div class="weather-info">
+                                    <span>Condition:</span>
+                                    <span>Partly Cloudy</span>
+                                </div>
+                                <div class="weather-info">
+                                    <span>Recommendation:</span>
+                                    <span class="weather-recommendation">Light Layers</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Style Studio Section -->
+        <section id="style-studio" class="style-studio">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Style Studio</h2>
+                    <p>Discover your unique style profile, explore trending looks, and create outfits that perfectly express your personality.</p>
+                </div>
+
+                <div class="studio-content">
+                    <!-- Style Profiles -->
+                    <div class="style-profiles">
+                        <div class="profiles-header">
+                            <h3>
+                                <i data-lucide="palette"></i>
+                                Style Profiles
+                            </h3>
+                            <button class="btn-outline btn-small">Take Style Quiz</button>
+                        </div>
+
+                        <div class="profiles-grid">
+                            <div class="profile-card">
+                                <div class="profile-header">
+                                    <span class="profile-icon">👔</span>
+                                    <div class="profile-info">
+                                        <h4>Classic Professional</h4>
+                                        <p>Timeless, sophisticated looks for the workplace</p>
+                                    </div>
+                                </div>
+                                <div class="profile-content">
+                                    <div class="profile-colors">
+                                        <p>Key Colors:</p>
+                                        <div class="color-tags">
+                                            <span class="color-tag">Navy</span>
+                                            <span class="color-tag">White</span>
+                                            <span class="color-tag">Gray</span>
+                                            <span class="color-tag">Black</span>
+                                        </div>
+                                    </div>
+                                    <div class="profile-popularity">
+                                        <span>Popularity:</span>
+                                        <span class="popularity-score">85%</span>
+                                    </div>
+                                    <button class="btn-outline profile-apply-btn">
+                                        <i data-lucide="wand-2"></i>
+                                        Apply Style
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="profile-card">
+                                <div class="profile-header">
+                                    <span class="profile-icon">👗</span>
+                                    <div class="profile-info">
+                                        <h4>Casual Chic</h4>
+                                        <p>Effortlessly stylish for everyday wear</p>
+                                    </div>
+                                </div>
+                                <div class="profile-content">
+                                    <div class="profile-colors">
+                                        <p>Key Colors:</p>
+                                        <div class="color-tags">
+                                            <span class="color-tag">Beige</span>
+                                            <span class="color-tag">Cream</span>
+                                            <span class="color-tag">Soft Pink</span>
+                                            <span class="color-tag">Light Blue</span>
+                                        </div>
+                                    </div>
+                                    <div class="profile-popularity">
+                                        <span>Popularity:</span>
+                                        <span class="popularity-score">92%</span>
+                                    </div>
+                                    <button class="btn-outline profile-apply-btn">
+                                        <i data-lucide="wand-2"></i>
+                                        Apply Style
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="profile-card">
+                                <div class="profile-header">
+                                    <span class="profile-icon">🎯</span>
+                                    <div class="profile-info">
+                                        <h4>Modern Minimalist</h4>
+                                        <p>Clean lines and neutral tones</p>
+                                    </div>
+                                </div>
+                                <div class="profile-content">
+                                    <div class="profile-colors">
+                                        <p>Key Colors:</p>
+                                        <div class="color-tags">
+                                            <span class="color-tag">Black</span>
+                                            <span class="color-tag">White</span>
+                                            <span class="color-tag">Gray</span>
+                                            <span class="color-tag">Camel</span>
+                                        </div>
+                                    </div>
+                                    <div class="profile-popularity">
+                                        <span>Popularity:</span>
+                                        <span class="popularity-score">78%</span>
+                                    </div>
+                                    <button class="btn-outline profile-apply-btn">
+                                        <i data-lucide="wand-2"></i>
+                                        Apply Style
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="profile-card">
+                                <div class="profile-header">
+                                    <span class="profile-icon">⚡</span>
+                                    <div class="profile-info">
+                                        <h4>Trendy Edge</h4>
+                                        <p>Bold choices that make a statement</p>
+                                    </div>
+                                </div>
+                                <div class="profile-content">
+                                    <div class="profile-colors">
+                                        <p>Key Colors:</p>
+                                        <div class="color-tags">
+                                            <span class="color-tag">Emerald</span>
+                                            <span class="color-tag">Wine</span>
+                                            <span class="color-tag">Mustard</span>
+                                            <span class="color-tag">Black</span>
+                                        </div>
+                                    </div>
+                                    <div class="profile-popularity">
+                                        <span>Popularity:</span>
+                                        <span class="popularity-score">67%</span>
+                                    </div>
+                                    <button class="btn-outline profile-apply-btn">
+                                        <i data-lucide="wand-2"></i>
+                                        Apply Style
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Color Palette Generator -->
+                        <div class="color-analysis-card">
+                            <div class="color-analysis-header">
+                                <h3>
+                                    <i data-lucide="palette"></i>
+                                    Personal Color Analysis
+                                </h3>
+                                <p>Based on your uploaded photo, we've identified your best colors</p>
+                            </div>
+                            <div class="color-analysis-content">
+                                <div class="color-palette">
+                                    <div class="color-swatch" style="background-color: #FF6B6B;"></div>
+                                    <div class="color-swatch" style="background-color: #4ECDC4;"></div>
+                                    <div class="color-swatch" style="background-color: #45B7D1;"></div>
+                                    <div class="color-swatch" style="background-color: #96CEB4;"></div>
+                                    <div class="color-swatch" style="background-color: #FFEAA7;"></div>
+                                    <div class="color-swatch" style="background-color: #DDA0DD;"></div>
+                                    <div class="color-swatch" style="background-color: #F0A0A0;"></div>
+                                    <div class="color-swatch" style="background-color: #C7B3E0;"></div>
+                                </div>
+                                <div class="color-actions">
+                                    <button class="btn-primary">Generate Outfits with These Colors</button>
+                                    <button class="btn-outline">Retake Analysis</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trending & Stats -->
+                    <div class="trending-stats">
+                        <div class="trending-header">
+                            <i data-lucide="trending-up"></i>
+                            <h3>Trending Now</h3>
+                        </div>
+
+                        <div class="trending-list">
+                            <div class="trending-card">
+                                <div class="trending-info">
+                                    <div class="trending-main">
+                                        <h4>Power Lunch Look</h4>
+                                        <p>Professional</p>
+                                    </div>
+                                    <span class="trending-badge">+15%</span>
+                                </div>
+                                <div class="trending-stats-info">
+                                    <div class="trending-stat">
+                                        <i data-lucide="heart"></i>
+                                        <span>234</span>
+                                    </div>
+                                    <div class="trending-stat">
+                                        <i data-lucide="bookmark"></i>
+                                        <span>89</span>
+                                    </div>
+                                </div>
+                                <div class="trending-actions">
+                                    <button class="btn-outline trending-action-btn">
+                                        <i data-lucide="heart"></i>
+                                        Like
+                                    </button>
+                                    <button class="btn-outline trending-action-btn">
+                                        <i data-lucide="share-2"></i>
+                                        Share
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="trending-card">
+                                <div class="trending-info">
+                                    <div class="trending-main">
+                                        <h4>Weekend Brunch</h4>
+                                        <p>Casual Chic</p>
+                                    </div>
+                                    <span class="trending-badge">+22%</span>
+                                </div>
+                                <div class="trending-stats-info">
+                                    <div class="trending-stat">
+                                        <i data-lucide="heart"></i>
+                                        <span>189</span>
+                                    </div>
+                                    <div class="trending-stat">
+                                        <i data-lucide="bookmark"></i>
+                                        <span>67</span>
+                                    </div>
+                                </div>
+                                <div class="trending-actions">
+                                    <button class="btn-outline trending-action-btn">
+                                        <i data-lucide="heart"></i>
+                                        Like
+                                    </button>
+                                    <button class="btn-outline trending-action-btn">
+                                        <i data-lucide="share-2"></i>
+                                        Share
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="trending-card">
+                                <div class="trending-info">
+                                    <div class="trending-main">
+                                        <h4>Date Night Ready</h4>
+                                        <p>Modern Minimalist</p>
+                                    </div>
+                                    <span class="trending-badge">+8%</span>
+                                </div>
+                                <div class="trending-stats-info">
+                                    <div class="trending-stat">
+                                        <i data-lucide="heart"></i>
+                                        <span>156</span>
+                                    </div>
+                                    <div class="trending-stat">
+                                        <i data-lucide="bookmark"></i>
+                                        <span>45</span>
+                                    </div>
+                                </div>
+                                <div class="trending-actions">
+                                    <button class="btn-outline trending-action-btn">
+                                        <i data-lucide="heart"></i>
+                                        Like
+                                    </button>
+                                    <button class="btn-outline trending-action-btn">
+                                        <i data-lucide="share-2"></i>
+                                        Share
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Style Insights -->
+                        <div class="style-insights-card">
+                            <div class="insights-header">
+                                <i data-lucide="trending-up"></i>
+                                <h3>Your Style Insights</h3>
+                            </div>
+                            <div class="insights-content">
+                                <div class="insight-stat">
+                                    <span>Outfits Created:</span>
+                                    <span>47</span>
+                                </div>
+                                <div class="insight-stat">
+                                    <span>Favorite Style:</span>
+                                    <span>Casual Chic</span>
+                                </div>
+                                <div class="insight-stat">
+                                    <span>Most Worn Color:</span>
+                                    <span>Navy Blue</span>
+                                </div>
+                                <div class="insight-stat">
+                                    <span>Style Score:</span>
+                                    <span class="insight-score">94/100</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Brand -->
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">
+                            <span>S</span>
+                        </div>
+                        <h3>Stylo</h3>
+                    </div>
+                    <p class="footer-description">
+                        Transforming how you discover and style your wardrobe with 
+                        AI-powered fashion intelligence. Minimal effort, maximum style.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i data-lucide="instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i data-lucide="twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i data-lucide="facebook"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Mail">
+                            <i data-lucide="mail"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product -->
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#dashboard">Dashboard</a></li>
+                        <li><a href="#ai-wardrobe">AI Wardrobe</a></li>
+                        <li><a href="#style-studio">Style Studio</a></li>
+                        <li><a href="#">Mobile App</a></li>
+                    </ul>
+                </div>
+
+                <!-- Company -->
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><button class="footer-link" data-modal="about-us">About Us</button></li>
+                        <li><button class="footer-link" data-modal="careers">Careers</button></li>
+                        <li><button class="footer-link" data-modal="press-kit">Press Kit</button></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><button class="footer-link" data-modal="help-center">Help Center</button></li>
+                        <li><button class="footer-link" data-modal="contact-us">Contact Us</button></li>
+                        <li><button class="footer-link" data-modal="style-guide">Style Guide</button></li>
+                    </ul>
+                </div>
+
+                <!-- Legal -->
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><button class="footer-link" data-modal="privacy-policy">Privacy Policy</button></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><button class="footer-link" data-modal="data-protection">Data Protection</button></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-separator"></div>
+
+            <div class="footer-bottom">
+                <p>© 2024 Stylo. All rights reserved.</p>
+                <p>Style Without the Effort</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle"></h3>
+                <button class="modal-close" id="modalClose">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="modalContent"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
